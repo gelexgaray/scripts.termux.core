@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+for filename in "$@"
+do
+    name=$(echo $filename | rev | cut -f 2- -d '.' | rev)
+    ffmpeg -i "$filename" "$name.h264.mp4" -vcodec h264 -acodec aac -crf 23 
+done
