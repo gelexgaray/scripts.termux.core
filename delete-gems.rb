@@ -1,5 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/env ruby
 # Remove all gems EXCEPT defaults :)
+# Credit goes for:
+# https://gist.github.com/nixpulvis/5042764#file-gem-reset
 
 `gem list -d`.split(/\n\n^(?=\w)/).each do |data|
   match = data.match(/(?<name>([^\s]+)) \((?<versions>.*)\)/)

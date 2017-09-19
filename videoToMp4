@@ -1,4 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
+# Take a list of video files and convert everything to MP4 with
+# h264 video and AAC audio (de-facto standard for Android devices)
 for filename in "$@"
 do
     name=$(echo $filename | rev | cut -f 2- -d '.' | rev)

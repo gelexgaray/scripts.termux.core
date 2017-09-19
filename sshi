@@ -1,1 +1,3 @@
+# Execute termux SSH daemon interactivelly. It keeps running while
+# the associated terminal is open
 sshd -D -e
