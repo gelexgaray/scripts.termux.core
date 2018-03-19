@@ -1,7 +1,0 @@
-#!/data/data/com.termux/files/usr/bin/bash
-# Take a file list of video files and convert everything to MP3 audio
-for filename in "$@"
-do
-    name=$(echo $filename | rev | cut -f 2- -d '.' | rev)
-    ffmpeg -i "$filename" "$name.mp3"
-done
