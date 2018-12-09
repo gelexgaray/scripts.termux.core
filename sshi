@@ -1,3 +1,8 @@
+addr=$(ifconfig wlan0 2> /dev/null | awk '/t addr:/{gsub(/.*:/,"",$2);print$2}')
+if [ ! -z $addr ];
+then
+  echo "wlan ip: $addr"
+fi
 # Execute termux SSH daemon interactivelly. It keeps running while
 # the associated terminal is open
 sshd -D -e
