@@ -1,0 +1,12 @@
+echo "Cleanup before backup..."
+apt clean
+proot-distro clear-cache
+echo "Prepare for backup..."
+DEST=/sdcard/backup/termux
+DATE=$( date -I )
+mkdir $DEST/$DATE
+cd $HOME
+echo "Backup root filesystem..."
+tar cvzf $DEST/$DATE/termux-backup.tar.gz -C /data/data/com.termux/files --exclude='*/proot-distro/*/debian/*' ./home ./usr
+echo "Backup proot debian..."
+proot-distro backup --output $DEST/$DATE/debian.proot-distro.tar.gz debian
