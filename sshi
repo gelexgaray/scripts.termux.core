@@ -1,8 +1,9 @@
-addr=$(ifconfig wlan0 2> /dev/null | awk '/t addr:/{gsub(/.*:/,"",$2);print$2}')
-if [ ! -z $addr ];
-then
-  echo "wlan ip: $addr"
-fi
+trap 'termux-wake-unlock' INT
+
+ifconfig 2>/dev/null | grep inet | awk '{$1=$1};1'
+echo
 # Execute termux SSH daemon interactivelly. It keeps running while
 # the associated terminal is open
+termux-wake-lock
 sshd -D -e
+termux-wake-unlock
